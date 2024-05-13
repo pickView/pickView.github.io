@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Instruments的使用使用方法 | I wanna see you halo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Instruments的使用使用方法</h1><a id="logo" href="/.">I wanna see you halo</a><p class="description">积跬步，至千里</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/history/"><i class="fa fa-book"> 历史</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Instruments的使用使用方法</h1><div class="post-meta">2016-10-08<span> | </span><span class="category"><a href="/categories/code/">code</a></span></div><div class="post-content"><p>Instruments 一个很灵活的、强大的工具，是性能分析、动态跟踪 和分析OS X以及iOS代码的测试工具，用它可以极为方便收集关于一个或多个系统进程的性能和行为的数据，并能及时随着时间跟踪而产生的数据，并检查所收集的数据，还可以广泛收集不同类型的数据.也可以追踪程序运行的过程，这样instrument就可以帮助我们了解用户的应用程序和操作系统的行为</p>
+<span id="more"></span>
+<h3 id="Leaks-：找到引发内存泄漏的起点"><a href="#Leaks-：找到引发内存泄漏的起点" class="headerlink" title="Leaks ：找到引发内存泄漏的起点"></a>Leaks ：找到引发内存泄漏的起点</h3><ul>
+<li>启动Instruments，找到Leaks图标</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/856942-6256efd46686afe2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="如图"></p>
+<ul>
+<li>点击进入Leaks的主面板：</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/856942-1fd27d36e1cff0f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="如图"></p>
+<p>1：录制按钮</p>
+<p>2：暂停按钮</p>
+<p>3：内存分配</p>
+<p>4：内存泄漏</p>
+<p>5：详细信息的查看方式</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/856942-eca6a91db0f07b8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="如图"></p>
+<p>开始录制后可以发发现leaks一栏有红色的差出现，代表出现了内存泄漏。</p>
+<p>点击箭头1所指的地方，选取Call Tree ，接下来箭头2所指的地方会出现四个选项。<br>Snapshots选项是设置时间间隔的，推荐设置成10.</p>
+<p>Call Tree选项点击后会出现四个菜单，推荐勾选Invert Call Tree(方便快速定位调用栈)和Hide Systerm Libraries(过滤掉一些无用的系统信息)。</p>
+<p>双击中间显示的调用函数行，可以定位到自己所写得代码。</p>
+<p>在运行的过程中可以发现泄漏就暂停，然后拖动时间轴到泄漏的附近，就可以仅查看该泄漏的函数调用栈。</p>
+<h3 id="Time-Profiler-分析代码的执行时间，找出导致程序变慢的原因"><a href="#Time-Profiler-分析代码的执行时间，找出导致程序变慢的原因" class="headerlink" title="Time Profiler : 分析代码的执行时间，找出导致程序变慢的原因"></a>Time Profiler : 分析代码的执行时间，找出导致程序变慢的原因</h3><ul>
+<li>启动Instruments，找到Leaks图标。如图：</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/856942-c1995cdff7e372d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="如图"></p>
+<ul>
+<li><p>点击进入和Leaks类似的界面，同样点击底部的Call Tree 选中Invert Call Tree 和 Hide Systerm Libraries，原因同上。界面如图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/856942-ce0f44055b39c39b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="如图"></p>
+</li>
+<li><p>一切设置正常后，进入Times profiler就是如图的界面：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/856942-57768cd1277e0a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="如图"></p>
+</li>
+</ul>
+<h3 id="Core-Animation-：帧率检测"><a href="#Core-Animation-：帧率检测" class="headerlink" title="Core Animation ：帧率检测"></a>Core Animation ：帧率检测</h3><ul>
+<li>Core Animation的基本使用方法和以上连个几乎一致，如图：</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/856942-063a581ceedcc311.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="如图"></p>
+</div><div class="tags"><a href="/tags/tools/"><i class="fa fa-tag"></i>tools</a><a href="/tags/test/"><i class="fa fa-tag"></i>test</a></div><div class="post-nav"><a class="pre" href="/2017/03/08/19_MLeaksFinder%20%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8/">MLeaksFinder 初次使用</a><a class="next" href="/2016/08/10/17_%E7%BB%99%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/">给图片添加水印</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RxSwift/">RxSwift</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">17</span></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/." rel="nofollow">I wanna see you halo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
